@@ -286,6 +286,245 @@ docs/
 
 ---
 
+## Phase 4: Implementation Execution
+
+After completing Phases 1-3 (analysis and planning), use Claude Code to perform the actual migration work.
+
+### Prerequisites
+- All Phase 1-3 agents completed
+- Documentation generated in `docs/` folder
+- Migration priority order defined (Agent 13)
+- .NET MAUI project structure created
+
+### Implementation Workflow
+
+#### Step 1: Project Setup
+Create the .NET MAUI project structure following `docs/architecture/maui-architecture.md`:
+
+```
+Prompt example:
+"Create a new .NET MAUI project structure for PhotoDemon following the
+architecture defined in docs/architecture/maui-architecture.md. Set up:
+- MVVM folder structure
+- Dependency injection in MauiProgram.cs
+- Base classes and interfaces
+- Follow best practices from MAUI-BestPractices.md"
+```
+
+#### Step 2: Migrate Shared Controls (Priority Phase 1)
+Start with shared/reusable controls as defined in `docs/migration/form-control-priority.md`:
+
+```
+Prompt example:
+"Migrate the VB6 control [ControlName] from Controls/[ControlName].ctl to .NET MAUI.
+
+Context:
+- VB6 source: Controls/[ControlName].ctl
+- Control mapping: docs/ui/control-mapping.md
+- MAUI best practices: MAUI-BestPractices.md
+- Target architecture: docs/architecture/maui-architecture.md
+
+Create:
+1. MAUI custom control implementation
+2. Bindable properties
+3. Platform-specific renderers if needed
+4. Usage example"
+```
+
+#### Step 3: Migrate Forms by Priority
+Follow the migration sequence from `docs/migration/form-control-priority.md`:
+
+```
+Prompt example:
+"Migrate VB6 Form [FormName] to .NET MAUI following the priority order.
+
+References:
+- VB6 source: Forms/[FormName].frm
+- VB6 architecture: docs/architecture/vb6-architecture.md
+- Control mappings: docs/ui/control-mapping.md
+- Data type mappings: docs/data/type-mapping.md
+- API mappings: docs/api/api-inventory.md
+- Dependency alternatives: docs/dependencies/dotnet-alternatives.md
+- Best practices: MAUI-BestPractices.md
+
+Create:
+1. XAML Page (View)
+2. ViewModel with Community Toolkit.MVVM
+3. Required services (register in DI)
+4. Navigation setup
+5. Unit tests for ViewModel
+
+Follow MVVM pattern and ensure trim-safe code (use IQueryAttributable, not QueryProperty)."
+```
+
+#### Step 4: Migrate Business Logic
+Migrate modules and classes referenced by the forms:
+
+```
+Prompt example:
+"Migrate VB6 Module [ModuleName] to .NET MAUI service.
+
+References:
+- VB6 source: Modules/[ModuleName].bas
+- Type mappings: docs/data/type-mapping.md
+- API equivalents: docs/api/api-inventory.md
+- Conversion guide: docs/guides/conversion-guide.md
+
+Create:
+1. Service interface
+2. Service implementation
+3. Register in MauiProgram.cs
+4. Unit tests"
+```
+
+#### Step 5: Migrate Effects and Algorithms
+Migrate the 200+ image processing tools:
+
+```
+Prompt example:
+"Migrate image effect [EffectName] from VB6 to .NET MAUI.
+
+References:
+- VB6 source: [path to effect code]
+- Algorithm documentation: docs/algorithms/effects-catalog.md
+- Dependency alternatives: docs/dependencies/dotnet-alternatives.md (use SkiaSharp)
+- Best practices: MAUI-BestPractices.md
+
+Create:
+1. Effect service implementing standard interface
+2. Async implementation for UI responsiveness
+3. Progress reporting
+4. Macro recording support
+5. Unit tests with sample images"
+```
+
+#### Step 6: Implement File Format Support
+Migrate file I/O handlers:
+
+```
+Prompt example:
+"Implement [Format] file format support for .NET MAUI PhotoDemon.
+
+References:
+- VB6 implementation: [path]
+- Format documentation: docs/formats/file-format-support.md
+- Dependency alternatives: docs/dependencies/dotnet-alternatives.md
+- Best practices: MAUI-BestPractices.md
+
+Use SkiaSharp or Magick.NET (check licensing).
+Implement streaming for large files.
+Create unit tests with sample files."
+```
+
+### Incremental Migration Best Practices
+
+**1. One Component at a Time**
+- Migrate one form/control per session
+- Test thoroughly before moving to next
+- Commit each completed component
+
+**2. Reference Documentation Consistently**
+- Always reference relevant docs in prompts
+- Keep documentation updated as you discover edge cases
+- Document deviations from original behavior
+
+**3. Maintain Parallel Testing**
+- Keep VB6 version for comparison
+- Test equivalent functionality
+- Document behavior differences
+
+**4. Use Git Branches**
+```bash
+git checkout -b migrate/form-main-window
+# Migrate component
+git commit -m "Migrate main window form to MAUI"
+git checkout main
+git merge migrate/form-main-window
+```
+
+**5. Progressive Integration**
+- Start with isolated components
+- Integrate incrementally
+- Run integration tests after each merge
+
+### Example Session Flow
+
+**Session 1: Migrate Color Picker Control**
+1. Read `docs/migration/form-control-priority.md` (identifies this as Phase 1 priority)
+2. Read `Controls/ColorPicker.ctl` (VB6 source)
+3. Read `docs/ui/control-mapping.md` (MAUI equivalent controls)
+4. Prompt Claude Code to create MAUI implementation
+5. Review, test, commit
+
+**Session 2: Migrate Main Window Form**
+1. Confirm dependencies migrated (check priority doc)
+2. Read `Forms/MainWindow.frm` and all referenced files
+3. Reference architecture, mappings, and best practices docs
+4. Prompt Claude Code to create Page + ViewModel + Services
+5. Review, test navigation, commit
+
+**Session 3: Migrate Image Processing Effect**
+1. Read effect source code
+2. Reference `docs/algorithms/effects-catalog.md`
+3. Reference `docs/dependencies/dotnet-alternatives.md` for SkiaSharp usage
+4. Prompt Claude Code to create effect service
+5. Test with sample images, commit
+
+### Monitoring Progress
+
+Create a tracking file: `MIGRATION-PROGRESS.md`
+
+```markdown
+# Migration Progress
+
+## Phase 1: Shared Controls (20 controls)
+- [x] ColorPicker (Session 1, Commit abc123)
+- [x] LayerList (Session 2, Commit def456)
+- [ ] ToolOptions
+- [ ] ...
+
+## Phase 2: Core Forms (50 forms)
+- [x] MainWindow (Session 10, Commit ghi789)
+- [ ] ImageCanvas
+- [ ] ...
+
+## Phase 3: Feature Forms (120 forms)
+- [ ] ...
+
+## Phase 4: Complex Forms (71 forms)
+- [ ] ...
+```
+
+### Parallel Execution Strategy
+
+Since Claude Code can run multiple tasks in parallel, you can accelerate migration:
+
+```
+"Migrate the following 3 independent controls in parallel:
+1. ColorPicker (Controls/ColorPicker.ctl)
+2. FontSelector (Controls/FontSelector.ctl)
+3. ZoomControl (Controls/ZoomControl.ctl)
+
+Reference docs/ui/control-mapping.md and MAUI-BestPractices.md for all three.
+These controls have no dependencies on each other per docs/migration/form-control-priority.md."
+```
+
+**Important:** Only parallelize truly independent components.
+
+### Quality Gates
+
+Before marking a component as "migrated":
+- [ ] Code compiles without warnings
+- [ ] Unit tests pass
+- [ ] Integration tests pass (if applicable)
+- [ ] Functionality matches VB6 version (or document intentional changes)
+- [ ] Follows MAUI best practices
+- [ ] Code is trim-safe (no QueryProperty, proper DI usage)
+- [ ] Performance is acceptable
+- [ ] Committed to version control
+
+---
+
 ## Execution Notes
 
 - Each agent task can be run independently using Claude Code
