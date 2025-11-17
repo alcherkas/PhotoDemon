@@ -225,6 +225,36 @@ Each agent task can be executed using Claude Code on the web:
 
 ---
 
+#### 13. Form/Control Migration Priority Agent
+**Objective**: Create prioritized migration sequence for 261 forms and 114 controls
+
+- Analyze form-to-control dependencies
+- Analyze control-to-control dependencies
+- Create comprehensive dependency tree/graph
+- Identify shared/reusable controls (migrate first)
+- Identify standalone vs. dependent forms
+- Categorize by complexity:
+  - Simple forms (basic UI, minimal logic)
+  - Medium forms (moderate controls, some business logic)
+  - Complex forms (heavy processing, custom controls, complex state)
+- Prioritize by business value:
+  - Core features (file open/save, basic editing)
+  - Secondary features (effects, filters)
+  - Advanced features (macros, batch processing)
+  - Administrative/settings UI
+- Generate migration sequence with phases:
+  - Phase 1: Shared controls and simple utility forms
+  - Phase 2: Core application forms
+  - Phase 3: Feature-specific forms
+  - Phase 4: Complex/specialized forms
+- Estimate effort per form/control
+- Identify blocking dependencies
+- Create migration checklist with order
+
+**Deliverable**: `docs/migration/form-control-priority.md`
+
+---
+
 ## Documentation Structure
 
 ```
@@ -246,7 +276,8 @@ docs/
 │   └── effects-catalog.md
 ├── migration/
 │   ├── roadmap.md
-│   └── risk-assessment.md
+│   ├── risk-assessment.md
+│   └── form-control-priority.md
 ├── guides/
 │   └── conversion-guide.md
 └── testing/
