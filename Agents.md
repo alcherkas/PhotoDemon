@@ -25,6 +25,9 @@ This migration is a substantial undertaking involving:
 - Service-oriented design
 - Plugin architecture for extensibility
 
+### Reference Documentation
+- **[MAUI Best Practices](./MAUI-BestPractices.md)** - Comprehensive guide for .NET MAUI architecture, performance optimization, and PhotoDemon-specific considerations
+
 ---
 
 ## Working with Claude Code
@@ -82,12 +85,12 @@ Each agent task can be executed using Claude Code on the web:
 - Analyze all third-party libraries and plugins
 - Document current dependency purposes and functionality
 - Research .NET 10 compatible alternatives:
-  - Image processing libraries (ImageSharp, SkiaSharp, Magick.NET)
+  - Image processing libraries (SkiaSharp, Magick.NET, ImageSharp)
   - Graphics libraries for MAUI
   - Compression libraries (SharpZipLib, etc.)
   - Codec libraries for PSD/RAW/XCF formats
 - Evaluate NuGet packages for feature parity
-- Document licensing compatibility
+- **Document licensing compatibility** (critical: PhotoDemon is BSD-licensed, avoid libraries with commercial restrictions like ImageSharp)
 - Assess performance characteristics of alternatives
 - Create dependency migration matrix (VB6 lib → .NET package)
 - Identify gaps requiring custom implementation
@@ -186,6 +189,7 @@ Each agent task can be executed using Claude Code on the web:
 - Design service layer
 - Design plugin architecture
 - Design cross-platform abstraction layer
+- Follow best practices from [MAUI-BestPractices.md](./MAUI-BestPractices.md)
 
 **Deliverable**: `docs/architecture/maui-architecture.md`
 
