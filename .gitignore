@@ -125,3 +125,7 @@ Support/twinBASIC/PDHelper/Build
 # debugging some plugins requires command-line, same folder availability of test files
 App/PhotoDemon/Plugins/*.dds
 App/PhotoDemon/Plugins/*.png
+# Migration artifacts
+*.maui.tmp
+migration-notes/
+.DS_Store
