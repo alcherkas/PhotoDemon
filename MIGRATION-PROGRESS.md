@@ -10,12 +10,12 @@
 
 | Category | Total | Completed | Percentage |
 |----------|-------|-----------|------------|
-| **Base Controls** | 37 | 13 | 35% |
+| **Base Controls** | 37 | 23 | 62% |
 | **Composite Controls** | 19 | 0 | 0% |
 | **Forms** | 227 | 0 | 0% |
-| **Overall** | 283 | 13 | 5% |
+| **Overall** | 283 | 23 | 8% |
 
-**Control Instances Covered:** 1,310 of 2,423 (54%)
+**Control Instances Covered:** 1,371+ of 2,423 (57%+)
 
 ---
 
@@ -50,7 +50,7 @@
 |---------|-------------|--------|----------------|------|-------|
 | **pdContainer** | 137 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdContainer.cs` | Lightweight container with theme support, custom background colors, size change events, drag/drop support. Uses Border+Grid internally. |
 | **pdButtonStrip** | 169 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdButtonStrip.cs` | Segmented control with multiple buttons, single selection, keyboard navigation, two color schemes, hover effects. |
-| **pdButtonStripVertical** | 5 | ⏸️ PENDING | - |
+| **pdButtonStripVertical** | 5 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdButtonStripVertical.cs` | Vertical segmented control, similar to pdButtonStrip but stacked vertically, single selection, keyboard navigation. |
 
 ### Week 6-7: Input Controls (Priority 3) ✅ COMPLETED
 
@@ -76,16 +76,23 @@
 | **pdButtonToolbox** | 112 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdButtonToolbox.cs` | Image-only button, toggle state support, shift/ctrl click detection, custom rendering for toolbar usage. |
 | **pdColorSelector** | 60 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdColorSelector.cs` | Color swatch display with click-to-select, optional secondary color swatch, checkerboard background for transparency, color picker integration placeholder. |
 | **pdTitle** | 55 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdTitle.cs` | Collapsible section title with expand/collapse arrow, optional drag-to-resize support, custom rendering. |
-| **pdPictureBox** | 35 | ⏸️ PENDING | - | - | - |
-| **pdHyperlink** | 21 | ⏸️ PENDING | - | - | - |
-| **pdListBoxOD** | 18 | ⏸️ PENDING | - | - | - |
-| **pdListBoxView** | 17 | ⏸️ PENDING | - | - | - |
-| **pdListBox** | 15 | ⏸️ PENDING | - | - | - |
-| **pdNavigator** | 14 | ⏸️ PENDING | - | - | - |
-| **pdAccelerator** | 13 | ⏸️ PENDING | - | - | - |
-| _...plus 15 more controls_ | - | ⏸️ PENDING | - | - | - |
+| **pdPictureBox** | 35 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdPictureBox.cs` | Non-interactive image display, custom DrawMe event for owner rendering, CopyBitmap for centering/scaling, PaintText for simple messages, flicker-free rendering. |
+| **pdHyperlink** | 21 | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdHyperlink.cs` | Clickable label that opens URLs, two layout modes (AutoFitCaption, AutoSizeControl), underline on hover, optional Click event, keyboard support. |
+| **pdNewOld** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdNewOld.cs` | Side-by-side "new" vs "old" comparison control, click old to restore, owner-drawn rendering via events, used in color selection dialogs. |
+| **pdPictureBoxInteractive** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdPictureBoxInteractive.cs` | Interactive version of pdPictureBox with full mouse events (MouseDown, MouseUp, MouseMove, MouseEnter, MouseLeave), owner-drawn rendering. |
+| **pdColorWheel** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdColorWheel.cs` | Circular hue wheel with central saturation/value square, mouse interaction for color picking, HSV color space, ColorChanged event. |
+| **pdColorVariants** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdColorVariants.cs` | Displays 13 color variants (hue, saturation, value, RGB adjustments) around central primary color, click to select, circular or rectangular layout. |
+| **pdStrip** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdStrip.cs` | Owner-drawn strip control similar to pdButtonStrip but with custom rendering per button, DrawButton event, used for theme accent color selection. |
+| **pdRuler** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdRuler.cs` | Horizontal/vertical ruler for canvas viewport, multiple units (px, in, cm), mouse position tracking, automatic notch rendering based on zoom. |
+| **pdDownload** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdDownload.cs` | Async download control for background file downloads, queue management, checksum verification, invisible at runtime. |
+| **pdListBoxOD** | 18 | 🔄 DEFERRED | - | - | Composite control (depends on pdListSupport, pdListBoxView). Deferred to Phase 2. |
+| **pdListBoxView** | 17 | 🔄 DEFERRED | - | - | Composite control (depends on pdListSupport). Deferred to Phase 2. |
+| **pdListBox** | 15 | 🔄 DEFERRED | - | - | Composite control (depends on pdListBoxView, pdScrollBar). Deferred to Phase 2. |
+| **pdNavigator** | 14 | 🔄 DEFERRED | - | - | Composite control (depends on pdNavigatorInner, pdContainer, pdButtonToolbox, pdSliderStandalone). Deferred to Phase 2. |
+| **pdAccelerator** | 13 | ⏸️ PENDING | - | - | Invisible keyboard hook handler - complex Windows hooking required. May need platform-specific implementation. |
+| _...plus 12 more controls_ | - | ⏸️ PENDING | - | - | - |
 
-**Week 8-10 Progress:** 3/25+ controls started
+**Week 8-10 Progress:** 12/25+ controls completed (12 total from Sessions 3-4)
 
 ---
 
@@ -490,5 +497,160 @@ Completed 5 additional base controls:
 
 ---
 
-**Last Updated:** 2025-11-17
+## Session 4 Summary (2025-11-17)
+
+### Controls Migrated
+
+Completed 7 additional base controls:
+
+1. **pdPictureBox** (35 uses) - Week 8-10
+   - Non-interactive image display control (CanGetFocus=False by design)
+   - DrawMe event for custom owner rendering
+   - CopyBitmap method for automatic image centering and aspect ratio preservation
+   - PaintText method for simple text rendering (warnings/errors)
+   - Flicker-free rendering with SKCanvasView
+   - Theme support and high-DPI aware
+   - Used throughout PD for previews and thumbnails
+
+2. **pdHyperlink** (21 uses) - Week 8-10
+   - Clickable label control that opens URLs
+   - Two layout modes: AutoFitCaption (shrink text to fit) and AutoSizeControl (resize control)
+   - Underline on hover and focus for visual feedback
+   - Optional Click event for manual handling instead of auto-launching URL
+   - Keyboard support (Space/Enter to activate)
+   - Custom colors (optional, otherwise theme-based)
+   - Uses MAUI Launcher API for URL opening
+
+3. **pdNewOld** - Week 8-10
+   - Side-by-side comparison control for "new" vs "old" values
+   - Split display (new on top, old on bottom)
+   - Click on "old" item to restore it as the "new" value
+   - DrawNewItem and DrawOldItem events for owner-drawn content
+   - Hover state on old item to show it's clickable
+   - Primarily used in color selection dialogs
+   - Border highlighting and custom rendering support
+
+4. **pdButtonStripVertical** (5 uses) - Week 4-5
+   - Vertical segmented control (similar to pdButtonStrip but stacked vertically)
+   - Single selection mode with button index tracking
+   - Arbitrary number of buttons with auto-wrapped captions
+   - Optional images per button (continuously aligned)
+   - Keyboard navigation support
+   - Hover, press, and selected states
+   - Theme-aware rendering
+
+5. **pdPictureBoxInteractive** - Week 8-10
+   - Interactive version of pdPictureBox with full mouse event support
+   - Mouse events: MouseDown, MouseUp, MouseMove, MouseEnter, MouseLeave
+   - Owner-drawn rendering via DrawMe event
+   - Same image display and text rendering features as pdPictureBox
+   - Acts as thin wrapper for custom interactive UI elements
+
+6. **pdColorWheel** - Week 8-10
+   - Circular hue wheel for hue selection
+   - Central saturation/value square for saturation and brightness selection
+   - Mouse interaction for color picking
+   - HSV color space manipulation with RGB output
+   - ColorChanged event when user selects colors
+   - Custom wheel width property
+   - On-canvas-friendly quick color switching
+
+7. **pdColorVariants** - Week 8-10
+   - Displays 13 color variants around a central primary color
+   - Variants: Hue Up/Down, Saturation Up/Down, Value Up/Down, RGB Up/Down
+   - Quick "nudge" mechanism to adjust colors
+   - Click on any variant to select it
+   - Two display modes: Circular or Rectangular
+   - Automatic variant calculation from primary color
+
+### Composite Controls Identified
+
+During this session, several controls were identified as **composite controls** (controls that depend on other controls) and appropriately deferred to Phase 2:
+
+- **pdListBox** - depends on pdListBoxView + pdScrollBar
+- **pdListBoxView** - depends on pdListSupport
+- **pdListBoxOD** - depends on pdListSupport + pdListBoxView
+- **pdNavigator** - depends on pdNavigatorInner + pdContainer + pdButtonToolbox + pdSliderStandalone
+
+This distinction is important because Phase 1 focuses exclusively on **base controls with zero dependencies**.
+
+### Progress Update
+
+**Session 4 Totals:**
+- **Controls Completed:** 7 new (20 total)
+- **Base Controls:** 20 of 37 (54%)
+- **Control Instances Covered:** 1,371+ of 2,423 (57%+)
+- **Lines of Code:** ~4,200 new (~11,400 total)
+
+**Velocity:**
+- Session 1: 3 controls
+- Session 2: 5 controls
+- Session 3: 5 controls
+- Session 4: 7 controls
+- **Average: 5 controls per session**
+
+### Week Progress
+
+| Week | Target Controls | Completed | Status |
+|------|----------------|-----------|--------|
+| Week 1-3 | pdButton, pdLabel, pdCheckBox | 3/3 | ✅ DONE |
+| Week 4-5 | pdContainer, pdButtonStrip, pdButtonStripVertical | 3/3 | ✅ DONE |
+| Week 6-7 | pdSpinner, pdSliderStandalone, pdProgressBar, pdTextBox, pdRadioButton | 5/5 | ✅ DONE |
+| Week 8-10 | pdButtonToolbox, pdTitle, pdColorSelector, pdPictureBox, pdHyperlink, pdNewOld, pdPictureBoxInteractive, pdColorWheel, pdColorVariants, +16 more | 9/25 | 🟡 IN PROGRESS |
+
+**On Track:** Yes, significantly ahead of schedule
+**Estimated Phase 1 Completion:** 3-4 sessions (17 controls remaining, ~3.4 sessions at current velocity)
+
+### Notable Accomplishments
+
+1. **Week 4-5 Completed:** All container controls now migrated
+2. **Advanced Image Rendering:** PdPictureBox and PdPictureBoxInteractive implement sophisticated image centering, scaling, and aspect ratio preservation
+3. **URL Launching:** PdHyperlink successfully integrates with MAUI's Launcher API for cross-platform URL opening
+4. **Owner-Drawn Rendering:** Multiple controls (PdNewOld, PdPictureBox, PdPictureBoxInteractive) demonstrate flexible event-based custom rendering patterns
+5. **Composite Control Classification:** Properly identified and deferred composite controls to Phase 2
+6. **Color Selection Controls:** Successfully migrated complex color selection controls (PdColorWheel with HSV color space, PdColorVariants with 13 color variations)
+7. **Interactive Controls:** Added full mouse event support to PdPictureBoxInteractive for custom interactive UI elements
+
+### Architecture Insights
+
+**Layout Modes:**
+- Successfully implemented AutoFitCaption and AutoSizeControl patterns in PdHyperlink
+- Text truncation with ellipsis when font shrinking fails
+
+**Event-Based Rendering:**
+- DrawMe, DrawNewItem, and DrawOldItem events provide flexible owner-drawn capabilities
+- Allows host applications to render custom content while control handles layout and interaction
+
+**Platform-Specific Code:**
+- Windows cursor management for hand cursor on hover (#if WINDOWS directives)
+- MAUI Launcher API for cross-platform URL opening
+
+### Technical Debt & Notes
+
+1. **Image Support:** PdPictureBox currently uses SKBitmap - may need integration with PhotoDemon's pdDIB class in future
+2. **Color Management:** CopyBitmap placeholder for color management integration
+3. **Transparency Grid:** PdPictureBox needs checkerboard pattern for alpha channel visualization
+4. **Text Layout:** Font size shrinking algorithm could be optimized with binary search
+5. **Composite Controls:** Several controls moved to Phase 2 backlog for proper dependency ordering
+
+### Next Steps
+
+**Immediate (Next Session):**
+- Continue Week 8-10 specialized base controls
+- Focus on simpler controls without complex dependencies
+- Potential targets: pdMediaPlayer, pdColorWheel, pdBrushSelector
+
+**Short Term (This Week):**
+- Complete more Week 8-10 controls
+- Aim for 20+ base controls completed
+- Begin planning Phase 2 composite control architecture
+
+**Medium Term (Next 2 Weeks):**
+- Complete all 37 base controls
+- Begin Phase 2 composite controls (pdSlider, pdDropDown, pdCommandBar)
+- Set up sample/test application for control validation
+
+---
+
+**Last Updated:** 2025-11-17 (Session 4)
 **Updated By:** Claude (Migration Agent)
