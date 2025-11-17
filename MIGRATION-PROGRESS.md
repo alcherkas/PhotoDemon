@@ -10,10 +10,10 @@
 
 | Category | Total | Completed | Percentage |
 |----------|-------|-----------|------------|
-| **Base Controls** | 37 | 20 | 54% |
+| **Base Controls** | 37 | 23 | 62% |
 | **Composite Controls** | 19 | 0 | 0% |
 | **Forms** | 227 | 0 | 0% |
-| **Overall** | 283 | 20 | 7% |
+| **Overall** | 283 | 23 | 8% |
 
 **Control Instances Covered:** 1,371+ of 2,423 (57%+)
 
@@ -82,6 +82,9 @@
 | **pdPictureBoxInteractive** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdPictureBoxInteractive.cs` | Interactive version of pdPictureBox with full mouse events (MouseDown, MouseUp, MouseMove, MouseEnter, MouseLeave), owner-drawn rendering. |
 | **pdColorWheel** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdColorWheel.cs` | Circular hue wheel with central saturation/value square, mouse interaction for color picking, HSV color space, ColorChanged event. |
 | **pdColorVariants** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdColorVariants.cs` | Displays 13 color variants (hue, saturation, value, RGB adjustments) around central primary color, click to select, circular or rectangular layout. |
+| **pdStrip** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdStrip.cs` | Owner-drawn strip control similar to pdButtonStrip but with custom rendering per button, DrawButton event, used for theme accent color selection. |
+| **pdRuler** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdRuler.cs` | Horizontal/vertical ruler for canvas viewport, multiple units (px, in, cm), mouse position tracking, automatic notch rendering based on zoom. |
+| **pdDownload** | - | ✅ DONE | 2025-11-17 | `src/PhotoDemon.Maui/Controls/PdDownload.cs` | Async download control for background file downloads, queue management, checksum verification, invisible at runtime. |
 | **pdListBoxOD** | 18 | 🔄 DEFERRED | - | - | Composite control (depends on pdListSupport, pdListBoxView). Deferred to Phase 2. |
 | **pdListBoxView** | 17 | 🔄 DEFERRED | - | - | Composite control (depends on pdListSupport). Deferred to Phase 2. |
 | **pdListBox** | 15 | 🔄 DEFERRED | - | - | Composite control (depends on pdListBoxView, pdScrollBar). Deferred to Phase 2. |
@@ -89,7 +92,7 @@
 | **pdAccelerator** | 13 | ⏸️ PENDING | - | - | Invisible keyboard hook handler - complex Windows hooking required. May need platform-specific implementation. |
 | _...plus 12 more controls_ | - | ⏸️ PENDING | - | - | - |
 
-**Week 8-10 Progress:** 9/25+ controls completed (9 total from Sessions 3-4)
+**Week 8-10 Progress:** 12/25+ controls completed (12 total from Sessions 3-4)
 
 ---
 
